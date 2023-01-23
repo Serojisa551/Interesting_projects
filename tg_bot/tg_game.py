@@ -4,7 +4,7 @@ import asyncio
 
 bot = AsyncTeleBot("5710299504:AAFoermLvSR-MUNcLADs2FuyWCDxkAiJh4o")
 
-
+#TODO(
 # Handle '/start' and '/help'
 @bot.message_handler(commands=["help", "start"])
 async def send_welcome(message):
@@ -41,4 +41,4 @@ async def echo_message(message):
     await bot.send_message(message.chat.id, lst[randrange(3)])
 
 
-asyncio.run(bot.polling(non_stop = True))
+asyncio.run(bot.polling(non_stop = True))#)
