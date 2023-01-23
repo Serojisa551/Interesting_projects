@@ -12,33 +12,33 @@ async def send_welcome(message):
         keyboard = types.ReplyKeyboardMarkup(
         row_width=2, resize_keyboard=False, one_time_keyboard=False
         )
-        tuxt1 = types.KeyboardButton(text="✋")
-        mkrat1 = types.KeyboardButton(text="✌️")
-        qar1 = types.KeyboardButton(text="👊")
-        keyboard.add(tuxt1, mkrat1, qar1)
+        paper = types.KeyboardButton(text="✋")
+        scissors= types.KeyboardButton(text="✌️")
+        fireplace = types.KeyboardButton(text="👊") 
+        keyboard.add(paper, scissors, fireplace)
         await bot.send_message(
             message.chat.id, "Добро пожаловать в игру камень ножницы бумага✌️👊🖐️", reply_markup=keyboard
         )
         pass
     elif message.text == "/help":
-        await bot.reply_to(message, "/start - helps to start again.")
+        await bot.reply_to(message, "/start - Помогает начать все сначала")
 
 
-# Handle all other messages with content_type 'text' (content_types defaults to ['text'])
+#A response sticker is generated here
 @bot.message_handler(func=lambda message: True)
 async def echo_message(message):
     lst = ["👊", "✋", "✌️"]
     keyboard = types.ReplyKeyboardMarkup(
         row_width=2, resize_keyboard=False, one_time_keyboard=False
     )
-    tuxt1 = types.KeyboardButton(text="✋")
-    mkrat1 = types.KeyboardButton(text="✌️")
-    qar1 = types.KeyboardButton(text="👊")
-    keyboard.add(tuxt1, mkrat1, qar1)
+    paper = types.KeyboardButton(text="✋")
+    scissors= types.KeyboardButton(text="✌️")
+    fireplace = types.KeyboardButton(text="👊") 
+    keyboard.add(paper, scissors, fireplace)
     await bot.send_message(
         message.chat.id, "💥💥💥", reply_markup=keyboard
     )
     await bot.send_message(message.chat.id, lst[randrange(3)])
 
-
-asyncio.run(bot.polling(non_stop = True))#)
+#)
+asyncio.run(bot.polling(non_stop = True))
