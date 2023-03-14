@@ -34,6 +34,7 @@ async def send_welcome(message):
         await bot.send_message(
             message.chat.id,
             "игра астановленая",
+            reply_markup=keyboard,
         )
     elif message.text == "/help":
         await bot.reply_to(message, "/start - Помогает начать все сначала")
@@ -49,8 +50,8 @@ async def echo_message(message):
     paper = types.KeyboardButton(text="✋")
     scissors = types.KeyboardButton(text="✌️")
     fireplace = types.KeyboardButton(text="👊")
-    start = types.KeyboardButton(text="/start")
-    keyboard.add(paper, scissors, fireplace, start)
+    stop = types.KeyboardButton(text="/stop")
+    keyboard.add(paper, scissors, fireplace, stop)
     sleep(0.05)
     await bot.send_message(message.chat.id, lst[randrange(3)], reply_markup=keyboard)
 
