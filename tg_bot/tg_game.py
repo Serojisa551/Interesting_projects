@@ -27,10 +27,10 @@ async def send_welcome(message):
             row_width=3, resize_keyboard=False, one_time_keyboard=False
         )
         start = types.KeyboardButton(text="/start")
-        paper = types.KeyboardButton(text="✋")
-        scissors = types.KeyboardButton(text="✌️")
-        fireplace = types.KeyboardButton(text="👊")
-        keyboard.add(paper, scissors, fireplace, start)
+        # paper = types.KeyboardButton(text="✋")
+        # scissors = types.KeyboardButton(text="✌️")
+        # fireplace = types.KeyboardButton(text="👊")
+        keyboard.add(start)
         await bot.send_message(
             message.chat.id,
             "игра астановленая",
