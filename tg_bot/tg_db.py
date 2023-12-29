@@ -28,7 +28,7 @@ async def send_welcome(message):
             message.chat.id, text="The bot is activated and ready to work"
         )
     if message.text == "/allfilms":
-        cursor.execute("SELECT name FROM kino")
+        cursor.execute("SELECT name FROM tg_kino")
         result = cursor.fetchall()
         length_result = len(result)
         if length_result == 0:
@@ -46,7 +46,7 @@ async def send_welcome(message):
 async def callback(call):
     if call.message:
         if call.data == "del_yes":
-            cursor.execute("TRUNCATE TABLE kino")
+            cursor.execute("TRUNCATE TABLE tg_kino")
             await bot.edit_message_text(
                 chat_id=call.message.chat.id,
                 message_id=call.message.id,
@@ -63,7 +63,8 @@ async def callback(call):
 # The reported user is saved here
 @bot.message_handler(func=lambda message: True)
 async def echo_message(message):
-    cursor.execute("INSERT INTO kino (name) VALUES ('{}')".format(message.text))
+    text = message.text
+    cursor.execute(f"INSERT INTO tg_kino (name) VALUES (ARRAY['{message.text}'])")
     conn.commit()
     await bot.send_message(message.chat.id, text="Message received!")
 
